@@ -1,12 +1,13 @@
 package com.besy.bcsb.repositorios.database;
 
 import com.besy.bcsb.dominio.Personaje;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface IPersonajeRepository extends CrudRepository<Personaje, Integer> {
+public interface IPersonajeRepository extends JpaRepository<Personaje, Integer> {
     @Query("select per from Personaje per where per.nombre=?1")
     List<Personaje> findByName(String nombre);
     @Query("select per from Personaje per where per.edad=?1")
